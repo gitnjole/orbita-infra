@@ -16,7 +16,7 @@ services:
       - wordpress_net
     restart: always
     ports:
-      - ${WP_PORT}
+      - "${WP_PORT}:80"
 
   db:
     image: mariadb:latest
