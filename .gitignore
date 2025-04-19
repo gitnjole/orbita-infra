@@ -1,3 +1,6 @@
 **/.env
 **/navidrome/*
-!navidrome/docker-compose.yml
+!**/navidrome/
+!**/navidrome/docker-compose.yml
+
+**/wp-content/*
