@@ -1,0 +1,33 @@
+services:
+  music:
+    image: deluan/navidrome:latest
+    user: 1001:1001
+    ports:
+      - "${MUSIC_PORT}:4533"
+    environment:
+      - ND_SCANSCHEDULE=${ND_SCANSCHEDULE}
+      - ND_LOGLEVEL=${ND_LOGLEVEL}
+      - ND_ENABLESHARING=${ND_ENABLESHARING}
+    volumes:
+      - "${MUSIC_DATA_PATH}:/data"
+      - "${MUSIC_SOURCE_PATH}:/music:ro"
+    restart: always
+
+  demo:
+    image: deluan/navidrome:latest
+    user: 1001:1001
+    ports:
+      - "${DEMO_PORT}:4533"
+    environment:
+      - ND_SCANSCHEDULE=${ND_SCANSCHEDULE}
+      - ND_LOGLEVEL=${ND_LOGLEVEL}
+      - ND_ENABLESHARING=${ND_ENABLESHARING}
+      - ND_DEFAULTTHEME=${ND_DEFAULTTHEME}
+      - ND_ENABLEDOWNLOADS=${ND_ENABLEDOWNLOADS}
+      - ND_ENABLEUSEREDITING=${ND_ENABLEUSEREDITING}
+      - ND_UILOGINBACKGROUNDURL=${ND_UILOGINBACKGROUNDURL}
+      - ND_UIWELCOMEMESSAGE=${ND_UIWELCOMEMESSAGE}
+    volumes:
+      - "${DEMO_DATA_PATH}:/data"
+      - "${DEMO_MUSIC_PATH}:/music:ro"
+    restart: always
