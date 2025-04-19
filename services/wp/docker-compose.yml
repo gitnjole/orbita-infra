@@ -1,0 +1,39 @@
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+    environment:
+      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
+      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=${MYSQL_USER}
+      - WORDPRESS_DB_PASSWORD=${MYSQL_PASSWORD}
+    depends_on:
+      - db
+    networks:
+      - wordpress_net
+    restart: always
+    ports:
+      - ${WP_PORT}
+
+  db:
+    image: mariadb:latest
+    container_name: db
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${WORDPRESS_DB_NAME}
+    networks:
+      - wordpress_net
+    restart: always
+
+networks:
+  wordpress_net:
+
+volumes:
+  db_data:
