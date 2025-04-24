@@ -11,6 +11,7 @@ log() {
 }
 
 CURRENT_IP=$(curl -s https://api.ipify.org)
+log "Polled IP: $CURRENT_IP"
 
 if [[ -f "$LAST_IP_FILE" ]]; then
   LAST_IP=$(<"$LAST_IP_FILE")
