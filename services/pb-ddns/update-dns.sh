@@ -4,23 +4,23 @@ if [ -f .env ]; then
   export $(grep -v '^#' .env | xargs)
 fi
 
-mkdir -p "$(dirname "$LOG_FILE")"
+mkdir -p "$(dirname "$LOG_FILE_PATH")"
 
 log() {
-  echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
+  echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE_PATH"
 }
 
 CURRENT_IP=$(curl -s https://api.ipify.org)
 log "Polled IP: $CURRENT_IP"
 
-if [[ -f "$LAST_IP_FILE" ]]; then
-  LAST_IP=$(<"$LAST_IP_FILE")
+if [[ -f "$LAST_IP_FILE_PATH" ]]; then
+  LAST_IP=$(<"$LAST_IP_FILE_PATH")
   if [[ "$CURRENT_IP" == "$LAST_IP" ]]; then
     exit 0
   fi
 fi
 
-echo "$CURRENT_IP" > "$LAST_IP_FILE"
+echo "$CURRENT_IP" > "$LAST_IP_FILE_PATH"
 
 cat > /tmp/porkbun-data.json << EOF
 {
