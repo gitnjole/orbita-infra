@@ -29,12 +29,12 @@ LAST_IP_FILE_PATH=/absolute/path/to/last_ip.txt
 
 2. Ensure the script is executable:
 ```bash
-chmod +x update-ddns.sh
+chmod +x update-dns.sh
 ```
 
 3. Set up a cronjob to execute it periodically, e.g. every 30 minutes:
 ```bash
-*/30 * * * * /path/to/your/script/update-ddns.sh >> /path/to/your/logs/ddns.log 2>&1
+*/30 * * * * /path/to/your/script/update-dns.sh >> /path/to/your/logs/ddns.log 2>&1
 ```
 
 4. Make sure the user running the cronjob has write access to the log
