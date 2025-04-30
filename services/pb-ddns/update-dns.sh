@@ -41,9 +41,4 @@ RESPONSE_SUB=$(curl -s -X POST "https://api.porkbun.com/api/json/v3/dns/editByNa
   -d @/tmp/porkbun-data.json)
 log "Subdomain API Response: $RESPONSE_SUB"
 
-RESPONSE_DSUB=$(curl -s -X POST "https://api.porkbun.com/api/json/v3/dns/editByNameType/$DOMAIN/A/$DEMO_SUBDOMAIN" \
-  -H "Content-Type: application/json" \
-  -d @/tmp/porkbun-data.json)
-log "Demo Subdomain API Response: $RESPONSE_DSUB" 
-
 rm /tmp/porkbun-data.json
