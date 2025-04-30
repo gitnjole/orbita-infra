@@ -21,6 +21,7 @@ DOMAIN=example.site
 SUBDOMAIN=anything
 LOG_FILE_PATH=/absolute/path/to/ddns.log
 LAST_IP_FILE_PATH=/absolute/path/to/last_ip.txt
+```
 
 ## Usage
 
