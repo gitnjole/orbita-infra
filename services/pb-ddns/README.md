@@ -29,7 +29,7 @@ LAST_IP_FILE_PATH=/absolute/path/to/last_ip.txt
 
 2. Ensure the script is executable:
 ```bash
-chmod +x pb-ddns.sh
+chmod +x update-ddns.sh
 ```
 
 3. Set up a cronjob to execute it periodically, e.g. every 30 minutes:
